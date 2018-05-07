@@ -19,7 +19,7 @@
 
           <div class="user">
             <span>
-              <small>Olá</small> {{currentUser.firstName}}
+              <small>Olá</small> {{currentUser?.firstName}}
             </span>
           </div>
         </div>
@@ -33,16 +33,16 @@
 
         <div class="col-md-2">
           <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-            <a class="nav-link" data-toggle="pill" routerLinkActive="active" [routerLink]="[{ outlets: { painel: ['home'] } }]" role="tab" aria-controls="home"
+            <a class="nav-link" data-toggle="pill" routerLinkActive="active" [routerLink]="['home']" role="tab" aria-controls="home"
               aria-selected="true">Home</a>
-            <a class="nav-link" data-toggle="pill" routerLinkActive="active" [routerLink]="[{ outlets: { painel: ['relatorio'] } }]" role="tab" aria-controls="relatorio"
+            <a class="nav-link" data-toggle="pill" routerLinkActive="active" [routerLink]="['relatorio']" role="tab" aria-controls="relatorio"
               aria-selected="false">Power BI</a>
           </div>
         </div>
 
         <div class="col-sm">
           <div class="painel container">
-            <router-outlet name="painel"></router-outlet>
+            <router-outlet></router-outlet>
           </div>
         </div>
 

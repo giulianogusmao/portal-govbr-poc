@@ -3,38 +3,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+// imports
+import { AppRoutingModule } from './app-routing.module';
+import { PortalModule } from './portal/portal.module';
+
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
 
+// components
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { LoginComponent } from './login/index';
-// import { RegisterComponent } from './register/index';
-
-import { PortalComponent } from './portal/index';
-import { HomeComponent } from './home/index';
-import { RelatorioComponent } from './relatorio/index';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    routing,
+    AppRoutingModule,
+    PortalModule,
   ],
   declarations: [
     AppComponent,
     AlertComponent,
     LoginComponent,
-    // RegisterComponent,
-    HomeComponent,
-    PortalComponent,
-    RelatorioComponent,
+
+    // PortalComponent,
+    // HomeComponent,
+    // RelatorioComponent,
   ],
   providers: [
     AuthGuard,
