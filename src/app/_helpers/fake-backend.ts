@@ -23,13 +23,17 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             // authenticate
             if (request.url.endsWith('/api/authenticate') && request.method === 'POST') {
                 // find if any user matches login credentials
-                let filteredUsers = users.filter(user => {
-                    return user.username === request.body.username && user.password === request.body.password;
-                });
+                let filteredUsers = 'demo' === request.body.username && 'demo' === request.body.password;
 
-                if (filteredUsers.length) {
+                if (filteredUsers) {
                     // if login details are valid return 200 OK with user details and fake jwt token
-                    let user = filteredUsers[0];
+                    let user = {
+                      id: 0,
+                      username: 'demo',
+                      firstName: 'Visitante',
+                      lastName: '',
+                    };
+
                     let body = {
                         id: user.id,
                         username: user.username,
@@ -41,7 +45,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.of(new HttpResponse({ status: 200, body: body }));
                 } else {
                     // else return 400 bad request
-                    return Observable.throw('Username or password is incorrect');
+                    return Observable.throw('Usuário ou senha incorretos.');
                 }
             }
 
@@ -52,7 +56,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.of(new HttpResponse({ status: 200, body: users }));
                 } else {
                     // return 401 not authorised if token is null or invalid
-                    return Observable.throw('Unauthorised');
+                    return Observable.throw('Não autorizado');
                 }
             }
 
@@ -69,7 +73,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.of(new HttpResponse({ status: 200, body: user }));
                 } else {
                     // return 401 not authorised if token is null or invalid
-                    return Observable.throw('Unauthorised');
+                  return Observable.throw('Não autorizado');
                 }
             }
 
@@ -114,13 +118,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.of(new HttpResponse({ status: 200 }));
                 } else {
                     // return 401 not authorised if token is null or invalid
-                    return Observable.throw('Unauthorised');
+                  return Observable.throw('Não autorizado');
                 }
             }
 
             // pass through any requests not handled above
             return next.handle(request);
-            
+
         })
 
         // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)

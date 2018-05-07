@@ -1,0 +1,52 @@
+<div class="pg-dash">
+  <div class="header">
+
+    <div class="barra-top">
+      <div class="container">
+        <div class="text-right">
+          <a [routerLink]="['/login']">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-container">
+      <div class="container">
+
+        <div class="main">
+          <p class="logo">
+            <img src="http://www.govbr.com.br/wp-content/themes/gov/images/LOGO-CONCEITO.png" alt="GOVBR">
+          </p>
+
+          <div class="user">
+            <span>
+              <small>Olá</small> {{currentUser.firstName}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-body">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-2">
+          <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+            <a class="nav-link" data-toggle="pill" routerLinkActive="active" [routerLink]="[{ outlets: { painel: ['home'] } }]" role="tab" aria-controls="home"
+              aria-selected="true">Home</a>
+            <a class="nav-link" data-toggle="pill" routerLinkActive="active" [routerLink]="[{ outlets: { painel: ['relatorio'] } }]" role="tab" aria-controls="relatorio"
+              aria-selected="false">Power BI</a>
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <div class="painel container">
+            <router-outlet name="painel"></router-outlet>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
