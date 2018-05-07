@@ -97,4 +97,27 @@ html {
     background-color: $cor-cinza;
     padding: 25px 0;
   }
+
+  .menu-lateral {
+    a {
+      color: $cor-azul;
+      margin: 2px 0;
+      // transition: .1s linear;
+
+      &:hover {
+        color: #FFF;
+        background-color: darken($cor-azul, 10);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($cor-azul,.5);
+        outline: none;
+      }
+
+      &.active {
+        color: #fff;
+        background-color: $cor-azul;
+      }
+    }
+  }
 }

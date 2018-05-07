@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   {
     path: 'portal',
     loadChildren: 'app/portal/portal.module#PortalModule',
-    // canLoad: [AuthenticateGuard],
+    // canLoad: [AuthGuard],
     canActivate: [AuthGuard],
   },
   {

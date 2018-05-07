@@ -12,12 +12,16 @@ import { fakeBackendProvider } from './_helpers/index';
 
 // components
 import { AppComponent } from './app.component';
-
+import { LoginComponent } from './login/index';
 import { AlertComponent } from './_directives/index';
+
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
-import { LoginComponent } from './login/index';
+import {
+  AlertService,
+  AuthenticationService,
+  UserService
+} from './_services/index';
 
 @NgModule({
   imports: [
